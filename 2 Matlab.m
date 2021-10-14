@@ -184,11 +184,49 @@ h([1 2])
 h2 = @(x) ones(x,3);
 h2(4)
 
-%% cell array
+%% cell array and structure
 clear
+clc
+%two way to create cell array
 % cell indexing
 A(1,1) = {[1,2,3,4,5]}; A(1,2)={'Hello World'};
 % content addressing
 B{1,1} = [1,2,3,4,5]; B{1,2}= 'Hello World';
+
 % preallocate an array
 C = cell(4,5);
+
+% cell function
+a = 1
+iscell(A)
+iscell(a)
+
+celldisp(A)
+a12 = cell2mat(A(1,2))
+
+%
+A1={1,2,3} %1*3 cell
+A2={[1,2,3]} % 1*1 cell
+A3 = {{1},{2},{3}} %1*3 cell  element is cell
+
+% create structure
+circle.radius = 2.5;
+circle(2).radius = 1;
+
+circle(1).area = circle(1).radius^2*3.14;
+circle(2).area = circle(2).radius^2*3.14;
+%% data
+dataFile ='./USTreasSpotRates.xlsx';
+
+maturitiesInMonths = xlsread(dataFile, 'D4:O4');
+spotRates = xlsread(dataFile, 'D5:O647');
+year = xlsread(dataFile, 'A5:A647');
+month = xlsread(dataFile, 'B5:B647');
+day = xlsread(dataFile, 'C5:C647');
+
+%% function
+a = [1 2];
+b = [3 4];
+c = find_sqdiff(a,b)
+
+
