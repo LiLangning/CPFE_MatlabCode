@@ -231,9 +231,5 @@ c = find_sqdiff(a,b)
 
 objFun=@(x) sin(x)+cos(x)
 ezplot(objFun, [-3,3])
-% local solution
 [x,val]=fzero(objFun,2)
 [x2,val2]=fzero(objFun,0)
-
-y = fsolve(objFun,0)
-[x , val ] = fminbnd ( objFun , -3 , 0)
