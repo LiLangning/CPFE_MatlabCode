@@ -229,11 +229,37 @@ a = [1 2];
 b = [3 4];
 c = find_sqdiff(a,b)
 
+global z;
+z =3;
+% use '~' or leave it blank to suppress output
+[a ~]=demo_sqdiff(2,4)
+[a ] = demo_sqdiff(2,4)
+
+% use nargin to control the input number
+% warning
+demo_sqdiff_argument(4)
+
+% local/subfunctions 
+main_sqdiff(2,4)% wrong. it is unvisible because it is a local function
+sqdiff_shift(2,4) 
+
+% anonymous function FH=@(arglist) expr
+
+
+%% Optimization
+clear
+clc
 objFun=@(x) sin(x)+cos(x)
 ezplot(objFun, [-3,3])
 % local solution
-[x,val]=fzero(objFun,2)
-[x2,val2]=fzero(objFun,0)
+[x1,val]=fzero(objFun,0)
+[x2,val2]=fzero(objFun,2)
 
+% fsolve for 1-D function
 y = fsolve(objFun,0)
 [x , val ] = fminbnd ( objFun , -3 , 0)
+
+% fminsearch for n-D function
+objFun = @( x ) sin ( x (1) ) * cos ( x (2) ) ;
+options = optimset ('Display ','iter ') ;
+[x , val ] = fminsearch ( objFun , [0 ,0] , options )
