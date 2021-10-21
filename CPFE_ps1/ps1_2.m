@@ -7,6 +7,6 @@ size(A)
 A(end+1) = '!'
 
 % string
-A = "Hello World"
+A = "Hello World";
 size(A)
 A + "!"
